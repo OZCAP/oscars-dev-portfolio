@@ -17,5 +17,5 @@ yarn dev
 Deploying site with docker [based on NextJs example](https://github.com/vercel/next.js/tree/canary/examples/with-docker):
 
 1. [Install Docker](https://docs.docker.com/get-docker/) on your machine.
-1. Build your container: `docker build -t nextjs-docker .`.
-1. Run your container: `docker run -p 3000:3000 nextjs-docker`.
+1. Build your container: `docker build -t oscarsdev .`.
+1. Run your container: `docker run --name oscarsdev -p 3000:3000 oscarsdev`.
