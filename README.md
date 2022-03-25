@@ -18,4 +18,4 @@ Deploying site with docker [based on NextJs example](https://github.com/vercel/n
 
 1. [Install Docker](https://docs.docker.com/get-docker/) on your machine.
 1. Build your container: `docker build -t oscarsdev .`.
-1. Run your container: `docker run -d --restart unless-stoped --name oscarsdev -p 3000:3000 oscarsdev`.
+1. Run your container: `docker run -d --restart unless-stopped --name oscarsdev -p 3000:3000 oscarsdev`.
