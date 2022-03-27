@@ -5,28 +5,16 @@ import Frame from '../src/components/Frame'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
-
+import fetchContent from '../src/utils/fetchContent';
 import ReactMarkdown from 'react-markdown'
+import { Project } from '../src/utils/interfaces'
 
-interface ContentProps {
-  content: {
-    projects: {
-      title: string,
-      body: string,
-      img: string,
-      gitref: string,
-      blogref: string
-    }
-  }
-}
 
 //@ts-ignore
-const Projects: NextPage = (props: ContentProps) => {
-  const projectsContent = props.content.projects
+const Projects = ({ projectsContent }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Frame title="Projects">
           {
-          //@ts-ignore
           projectsContent.map((proj) => 
             <Project
             key={proj.href}
@@ -43,7 +31,7 @@ const Projects: NextPage = (props: ContentProps) => {
   )
 }
   
-const Project = (props:any) => {
+const Project = (props: Project) => {
   return (
     <div className="text-lg inline-block 
                     lg:mb-4">
@@ -77,6 +65,16 @@ const Project = (props:any) => {
       <hr className="clear-both"/>
     </div>
   )
+}
+
+export const getStaticProps = async () => {
+  const projectsContent = await fetchContent('projects', 'title, body, img, href, gitref, blogref');
+  return {
+    props: {
+      projectsContent
+    },
+    revalidate: process.env.NEXT_PUBLIC_REVALIDATION
+  }
 }
 
 export default Projects

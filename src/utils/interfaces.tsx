@@ -23,6 +23,10 @@ export interface HomeLink {
     type: string
 }
 
-export interface Section {
-    
-}
+interface Project {
+    title: string,
+    body: string,
+    img: string,
+    gitref: string,
+    blogref: string
+  }

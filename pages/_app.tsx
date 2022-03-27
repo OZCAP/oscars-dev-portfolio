@@ -8,42 +8,39 @@ import { getTheme } from '../src/utils/getTheme';
 import DarkModeSwitch from '../src/components/DarkModeSwitch';
 import { useRouter } from 'next/router';
 import fetchContent from '../src/utils/fetchContent';
-import ContentLoader from '../src/components/ContentLoader';
+import filterPageData from '../src/utils/filterPageData';
 
+import { HomeLink } from "../src/utils/interfaces";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false ;
 
-
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
-  const [dark, setDark] = useState(false);
   const [content, setContent] = useState<Object>({})
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    setDark(getTheme());
-    getAllContent();
+    getTheme();
+    getHomeContent();
+    setLoading(false);
   }, []);
-  
 
-  async function getAllContent() {
-    const projects = await fetchContent('projects', 'title, body, img, href, gitref, blogref');
-    const story = await fetchContent('story', 'text, iconType, iconName');
-    const home = await fetchContent('homelinks', 'text, iconType, iconName, type, href');
+  async function getHomeContent() {
     const sections = await fetchContent('sections', 'num, page, element, text');
-
+    const homePageLinks = await fetchContent('homelinks', 'text, iconType, iconName, type, href');
+    //@ts-ignore
+    const titles = filterPageData('home', sections).titles.split(',');
+    //@ts-ignore
+    const textLinks = homePageLinks.filter((link: HomeLink) => link.type == 'textLink')
+    //@ts-ignore
+    const iconLinks = homePageLinks.filter((link: HomeLink) => link.type == 'iconLink')
     setContent({ 
-      projects: projects,
-      story: story,
-      home: home,
-      sections: sections
+      titles: titles,
+      textLinks: textLinks,
+      iconLinks: iconLinks
     })
-
-    setLoading(false)
   }
-
-  if (loading) return <ContentLoader />
 
   return(
     <main className="bg-slate-50 dark:bg-slate-700 h-screen">
@@ -62,23 +59,18 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta name="theme-color" content="#ffffff"/>
         </Head>
 
-        
-        
-        <Component {...pageProps} content={content}/>
+        <Component {...pageProps} />
         
         <div className="absolute pr-6 float-right pb-5 right-0 top-5 z-40
                         md:right-10 md:top-5"><DarkModeSwitch/></div>
-
           <div>
             { router.asPath != '/' && <Link href={'/'} passHref ><span className="fixed w-screen h-screen z-20"></span></Link>}
-            <Home content={content}/>
+            <Home content={content} loading={loading}/>
           </div> 
 
       </div>
     </main>
     )
-    
-
 }
 
 export default MyApp

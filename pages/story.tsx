@@ -7,16 +7,17 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faMicrochip, faServer, faWifi} from '@fortawesome/free-solid-svg-icons'
 import filterPageData from '../src/utils/filterPageData'
 import ReactMarkdown from 'react-markdown'
+import fetchContent from '../src/utils/fetchContent';
 //@ts-ignore
 library.add(fab, faServer, faWifi, faMicrochip);
 
-const Story: NextPage = (props) => {
-  const text = filterPageData('story', props.content.sections);
+const Story: NextPage = ({ story, text }) => {
+
   return (
     <Frame title="Story">
       <div className="text-lg md:text-2xl md:px-1">
 
-        {props.content.story.map((story) => 
+        {story.map((story) => 
 
           <div key={story.iconName} 
             className="mb-6
@@ -43,6 +44,21 @@ const Story: NextPage = (props) => {
     </Frame>
 
   )
+}
+
+export const getStaticProps = async () => {
+  const sections = await fetchContent('sections', 'num, page, element, text');
+
+  const story = await fetchContent('story', 'text, iconType, iconName');
+  const text = filterPageData('story', sections);
+
+  return {
+    props: {
+      story,
+      text
+    },
+    revalidate: process.env.NEXT_PUBLIC_REVALIDATION
+  }
 }
 
 export default Story
