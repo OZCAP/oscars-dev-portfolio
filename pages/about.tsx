@@ -22,7 +22,7 @@ const About: NextPage = (props) => {
           <div className="w-5/12 float-right ml-1 mr-3 
                           md:ml-4
                           lg:w-4/12">
-          <Image className="rounded-xl" src={text.img} alt="" width={640} height={640}/>
+          <Image className="rounded-3xl" src={text.img} alt="" width={640} height={640}/>
           </div>
           <div className="my-3 text-md
                         lg:text-2xl"><ReactMarkdown>{text.b1}</ReactMarkdown></div>
