@@ -47,6 +47,7 @@ const Story: NextPage = ({ story, text }) => {
 }
 
 export const getStaticProps = async () => {
+  const revalidation = parseInt(process.env.NEXT_PUBLIC_REVALIDATION);
   const sections = await fetchContent('sections', 'num, page, element, text');
 
   const story = await fetchContent('story', 'text, iconType, iconName');
@@ -57,7 +58,7 @@ export const getStaticProps = async () => {
       story,
       text
     },
-    revalidate: process.env.NEXT_PUBLIC_REVALIDATION
+    revalidate: revalidation
   }
 }
 

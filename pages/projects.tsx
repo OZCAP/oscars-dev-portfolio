@@ -68,12 +68,13 @@ const Project = (props: Project) => {
 }
 
 export const getStaticProps = async () => {
+  const revalidation = parseInt(process.env.NEXT_PUBLIC_REVALIDATION);
   const projectsContent = await fetchContent('projects', 'title, body, img, href, gitref, blogref');
   return {
     props: {
       projectsContent
     },
-    revalidate: process.env.NEXT_PUBLIC_REVALIDATION
+    revalidate: revalidation
   }
 }
 
