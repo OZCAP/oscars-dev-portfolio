@@ -25,7 +25,7 @@ export default function Home(props) {
         setTimeout(() => setTitleNum(newTitleNum()), 3000);
         setTitleVisible(true);
       }
-    }, [titleNum]);
+    }, [titleNum, loading]);
   
     function newTitleNum() {
       let newTitleNum = titleNum + 1;
