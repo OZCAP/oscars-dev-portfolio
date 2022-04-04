@@ -53,15 +53,18 @@ const Project = (props: Project) => {
       </a>
       }
       <a href={props.href} target="_blank" rel="noreferrer">
-        <button className="bg-blue-500 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-green-700 text-white font-bold py-2 px-3 rounded float-right mr-1">
+        <button className="bg-blue-500 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-green-700 text-white font-bold py-2 px-3 rounded float-right mr-1 mb-2">
           <FontAwesomeIcon icon={faArrowAltCircleRight} width="25"/>
         </button>
       </a>
+
+      { props.gitRef  &&
       <a href={props.gitRef} target="_blank" rel="noreferrer">
         <button className="bg-slate-900 hover:bg-red-900 text-white font-bold py-2 px-3 rounded mr-2 mb-2 float-right">
           <FontAwesomeIcon icon={faGithub} width="25"/>
         </button>
       </a>
+      }
       <hr className="clear-both"/>
     </div>
   )
