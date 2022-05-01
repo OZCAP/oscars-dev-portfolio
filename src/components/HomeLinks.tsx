@@ -8,28 +8,30 @@ const HomeLinks = (props: { loading: boolean, links: Array<LinkData> }) => {
 
     return (
       <AnimatePresence>
-        {!loading &&
-        links.map((link:LinkData) =>
-          <motion.div
-            key={link.text}
-            className="cursor-pointer"
-            whileHover={{ scale: 1.01 }}
-            whileTap={{ scale: 1.05, color: "#475569" }}
-            transition={{ 
-            duration: 0.5 + (links.indexOf(link)/7),
-            type: "spring",
-            damping: 10,
-            stiffness: 300 }}>
-              {link.href.includes(':') ? 
-              <a href={link.href} target="_blank" rel="noreferrer"><div
-              className="text-slate-300 hover:text-slate-500 dark:text-slate-500 dark:hover:text-slate-300 cursor-pointer select-none" 
-              style={{transition: "color 0.5s ease"}}>{link.text}</div></a>
-              :
-              <Link href={link.href} passHref><div
-              className="text-slate-300 hover:text-slate-500 dark:text-slate-500 dark:hover:text-slate-300 cursor-pointer select-none" 
-              style={{transition: "color 0.5s ease"}}>{link.text}</div></Link>
-              }
-          </motion.div>
+        { !loading &&
+          links.map((link:LinkData) =>
+            <motion.div
+              key={link.text}
+              className="cursor-pointer"
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 1.05, color: "#475569" }}
+              transition={{ 
+              duration: 0.5 + (links.indexOf(link)/7),
+              type: "spring",
+              damping: 10,
+              stiffness: 300 }}>
+
+                {/* choose <a> or <Link> based off link being internal or external */}
+                { link.href.includes(':') ? 
+                  <a href={link.href} target="_blank" rel="noreferrer"><div
+                  className="text-slate-300 hover:text-slate-500 dark:text-slate-500 dark:hover:text-slate-300 cursor-pointer select-none" 
+                  style={{transition: "color 0.5s ease"}}>{link.text}</div></a>
+                  :
+                    <Link href={link.href} passHref><div
+                    className="text-slate-300 hover:text-slate-500 dark:text-slate-500 dark:hover:text-slate-300 cursor-pointer select-none" 
+                    style={{transition: "color 0.5s ease"}}>{link.text}</div></Link>
+                }
+            </motion.div>
           )}
         </AnimatePresence>
     );

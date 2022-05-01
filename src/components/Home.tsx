@@ -43,26 +43,34 @@ export default function Home(props) {
     return (
       <div className="h-screen pt-7 md:pt-0" style={{transition: 'background-color 0.5s'}}>
           <div className="h-auto md:h-screen pl-7 pt-7 md:pl-20 md:pr-20 md:pt-0 md:flex lg:mx-20 overflow-hidden z-10">
+            
+            {/* text links col 1  */}
             <div className="mx-auto text-5xl text-slate-600 dark:text-slate-400 pb-4 md:my-auto md:pb-0 md:pl-5 inline-block">
-              <div className="">Oscar Pickerill</div>
-              {!loading &&
+              <p>Oscar Pickerill</p>
+              { !loading &&
                 <AnimatePresence>
-                {titleVisible && 
+                { titleVisible && 
                   <motion.div className="absolute pl-1 text-2xl text-slate-400 dark:text-slate-500" 
                     key="1"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{duration: 0.5 }}>{titles[titleNum].toLowerCase()}</motion.div>
+                    transition={{duration: 0.5 }}>
+                      { titles[ titleNum ].toLowerCase() }
+                    </motion.div>
                   }
                 </AnimatePresence>
                 }
                 <br />
               <SocialIcons links={iconLinks} loading={loading}/>
             </div>
+            
+            {/* text links (col 2) */}
             <div 
               className="m-auto text-5xl space-y-2 pt-2 text-slate-300 dark:text-slate-500 font-semibold select-none md:my-auto md:text-6xl md:space-y-0 md:pt-0" >
-              <HomeLinks links={textLinks} loading={loading} />
+              <HomeLinks 
+                links={textLinks} 
+                loading={loading}/>
             </div>
           </div>
       </div>

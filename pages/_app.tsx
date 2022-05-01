@@ -59,14 +59,23 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta name="theme-color" content="#ffffff"/>
         </Head>
 
+        {/* window content */}
         <Component {...pageProps} />
         
-        <div className="absolute pr-6 float-right pb-5 right-0 top-5 z-40
-                        md:right-10 md:top-5"><DarkModeSwitch/></div>
-          <div>
-            { router.asPath != '/' && <Link href={'/'} passHref ><span className="fixed w-screen h-screen z-20"></span></Link>}
-            <Home content={content} loading={loading}/>
-          </div> 
+        {/* dark mode switch  */}
+        <div className="absolute pr-6 float-right pb-5 right-0 top-5 z-40 md:right-10 md:top-5">
+          <DarkModeSwitch/>
+        </div>
+        
+        {/* click outside zone */}
+        { router.asPath != '/' && 
+          <Link href={'/'} passHref >
+            <span className="fixed w-screen h-screen z-20"></span>
+          </Link>
+        }
+
+        {/* home content */}
+        <Home content={content} loading={loading}/>
 
       </div>
     </main>

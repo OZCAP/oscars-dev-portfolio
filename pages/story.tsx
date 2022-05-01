@@ -12,27 +12,19 @@ import fetchContent from '../src/utils/fetchContent';
 library.add(fab, faServer, faWifi, faMicrochip);
 
 const Story: NextPage = ({ story, text }) => {
-
   return (
     <Frame title="Story">
       <div className="text-lg md:text-2xl md:px-1">
-
-        {story.map((story) => 
-
+        { story.map((story) => 
           <div key={story.iconName} 
-            className="mb-6
-            md:my-12
-            ">
+            className="mb-6 md:my-12">
             <div 
-            className="w-3/12 float-right mx-3 mt-2
-                        md:w-1/12 text-6xl">
+            className="w-3/12 float-right mx-3 mt-2 md:w-1/12 text-6xl">
               <FontAwesomeIcon icon={[ story.iconType, story.iconName ]} width={75} />
             </div>
             <ReactMarkdown>{story.text}</ReactMarkdown>
-
           </div>
         )}
-
         <hr />
         <div className="my-6">
           <div className="mb-3">
@@ -42,7 +34,6 @@ const Story: NextPage = ({ story, text }) => {
           </div>
         </div>
     </Frame>
-
   )
 }
 

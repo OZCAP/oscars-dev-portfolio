@@ -41,26 +41,32 @@ export default function DarkModeSwitch() {
     return (
       <Switch.Group>
         <div className="flex items-center">
+
+          {/* sun status icon */}
           <Switch.Label className="mr-2 float-right">
             <LabelIcon icon={faSun} active={enabled?'':'true'}/>
-            </Switch.Label>
-      <Switch
-        checked={enabled}
-        onChange={toggleTheme}
-        className={`${
-          enabled ? 'bg-slate-400' : 'bg-indigo-100'
-        } relative inline-flex items-center h-6 rounded-full w-11`}
-      >
-        <span className="sr-only">Enable dark mode</span>
-        <motion.span
-          animate={enabled ? {x:24} : {x:5}}
-          className={`inline-block w-4 h-4 transform bg-white rounded-full`}
-        />
-      </Switch>
-      <Switch.Label className="ml-2">
-        <LabelIcon icon={faMoon} active={enabled?'true':''}/>
-      </Switch.Label>
-      </div>
+          </Switch.Label>
+
+          {/* switch component */}
+          <Switch
+            checked={enabled}
+            onChange={toggleTheme}
+            className={`${enabled ? 'bg-slate-400' : 'bg-indigo-100'} relative inline-flex items-center h-6 rounded-full w-11`}>
+            <span className="sr-only">
+              Enable dark mode
+            </span>
+            <motion.span
+              animate={enabled ? {x:24} : {x:5}}
+              className={`inline-block w-4 h-4 transform bg-white rounded-full`}
+            />
+          </Switch>
+
+          {/* moon status icon */}
+          <Switch.Label className="ml-2">
+            <LabelIcon icon={faMoon} active={enabled?'true':''}/>
+          </Switch.Label>
+
+        </div>
       </Switch.Group>
     )
   }

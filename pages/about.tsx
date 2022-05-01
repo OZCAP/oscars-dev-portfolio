@@ -13,37 +13,20 @@ interface TextContent {
 }
 
 const About = ({ about }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  
   return (
       <Frame title="About">
           <div className="text-lg">
-          <p className="my-3 mb-6 text-2xl font-semibold
-                        lg:text-3xl">
-                          {/* 
-                          @ts-ignore */}
-                          {about.t1}</p>
-          <div className="w-5/12 float-right ml-1 mr-3 
-                          md:ml-4
-                          lg:w-4/12">
-                            {/* 
-                          @ts-ignore */}
-          <Image className="rounded-3xl" src={about.img} alt="" width={640} height={640}/>
+          <p className="my-3 mb-6 text-2xl font-semibold lg:text-3xl">
+            {about.t1}</p>
+          <div className="w-5/12 float-right ml-1 mr-3 md:ml-4 lg:w-4/12">        
+            <Image className="rounded-3xl" src={about.img} alt="" width={640} height={640}/>
           </div>
-          <div className="my-3 text-md
-                        lg:text-2xl">
-                        {/* 
-                          @ts-ignore */}
-                        <ReactMarkdown>{about.b1}</ReactMarkdown></div>
-          
-          <div className="mt-7 text-md
-                        lg:text-xl lg:mt-14">
-                        {/* 
-                          @ts-ignore */}
-                        <ReactMarkdown>{about.b2}</ReactMarkdown></div>
+          <div className="my-3 text-md lg:text-2xl">         
+            <ReactMarkdown>{about.b1}</ReactMarkdown></div>
+          <div className="mt-7 text-md lg:text-xl lg:mt-14">   
+            <ReactMarkdown>{about.b2}</ReactMarkdown></div>
         </div>
-        
       </Frame>
-
   )
 }
 
@@ -55,7 +38,6 @@ export const getStaticProps = async () => {
   //@ts-ignore
   const about: TextContent = filterPageData('about', sections);
   
-
   return {
     props: {
       about,
