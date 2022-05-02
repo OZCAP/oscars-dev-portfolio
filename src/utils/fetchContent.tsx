@@ -11,6 +11,6 @@ export default async function fetchContent(table: string, columns: string) {
     const res = await supabase
       .from(table)
       .select(columns)
-      .order('num', { ascending: true })
+      .order('num', { ascending: false })
     return (res.data)
 }
