@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 
 export default function ResumeViewer() {
     return (
-        <PDFViewer className='w-full'>
+        <PDFViewer className='w-full h-full'>
             <MyDocument />
         </PDFViewer>
     )
