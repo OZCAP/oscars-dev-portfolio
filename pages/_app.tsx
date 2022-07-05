@@ -46,8 +46,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     <main className="bg-slate-50 dark:bg-slate-700 h-screen">
       <div className="max-w-screen-xl mx-auto">
         <Head>
-          <title>{"Oscar's Dev Portfolio"}</title>
-          <meta name="description" content="A portfolio of my personal projects and skills." />
+          <title>{"Oscar's Developer Portfolio"}</title>
+          <meta name="description" content="Oscar Pickerill - Full-stack engineer portfolio: React, Typescript, Next JS, Node JS" />
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
           <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
