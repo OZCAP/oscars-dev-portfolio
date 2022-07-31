@@ -23,10 +23,12 @@ export interface HomeLink {
     type: string
 }
 
-interface Project {
+export interface Project {
     title: string,
     body: string,
     img: string,
-    gitref: string,
-    blogref: string
+    href:string
+    gitRef: string,
+    blogRef: string,
+    stack: string[],
   }
