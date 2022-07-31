@@ -46,21 +46,34 @@ const Project = (props: Project) => {
                     />
                 </div>
             </a>
-            <div className="text-md mb-4 h-48  overflow-clip md:text-xl lg:text-2xl lg:h-72">
+            <div className="text-md  overflow-clip md:text-xl lg:text-2xl lg:h-72">
                 <ReactMarkdown>{props.body}</ReactMarkdown>
             </div>
 
-            <div className="flex place-content-between">
-
+            <div className={`${props.stack.length > 3 ? "block" : "flex"} clear-both`}>
                 {/* stack info */}
-                <div className="flex">
-                    {props.stack.map((item) => (
-                        <p>{item}</p>
-                    ))}
-                </div>
+                {props.stack.length > 0 && (
+                    <div
+                        className={`flex flex-wrap ${
+                            props.stack.length > 1 ? "place-content-around" : ""
+                        } px-5 space-x-7 clear-both`}
+                    >
+                        {props.stack.map((item) => {
+                            if (item.length > 0) {
+                                return (
+                                    <img
+                                        className="h-7 my-2"
+                                        alt={`${item} icon`}
+                                        src={`/icon/${item}.svg`}
+                                    />
+                                );
+                            }
+                        })}
+                    </div>
+                )}
 
                 {/* link buttons */}
-                <div className="">
+                <div className="ml-auto mr-0 my-2">
                     {props.blogRef && (
                         <a
                             href={props.blogRef}
