@@ -13,6 +13,7 @@ import filterPageData from '../src/utils/filterPageData';
 import { HomeLink } from "../src/utils/interfaces";
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import Script from 'next/script';
 config.autoAddCss = false ;
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -56,6 +57,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           <meta name="msapplication-TileColor" content="#da532c"/>
           <meta name="theme-color" content="#ffffff"/>
         </Head>
+
+        <Script async defer data-website-id="6cde90d0-ed79-43cd-bc68-256751a7eadd" src="https://umami.oscars.dev/umami.js"></Script>
 
         {/* window content */}
         <Component {...pageProps} />
