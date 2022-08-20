@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <div className="max-w-screen-xl mx-auto">
         <Head>
           <title>{"Oscar's Developer Portfolio"}</title>
-          <meta name="description" content="Oscar Pickerill - Full-stack engineer portfolio: React, Typescript, Next JS, Node JS" />
+          <meta name="description" content="Oscar Pickerill - Full stack engineer with a passion for building on the web" />
           <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡️</text></svg>" />
           <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡️</text></svg>" />
           <link rel="manifest" href="/site.webmanifest"/>
